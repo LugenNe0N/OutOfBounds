@@ -1,45 +1,28 @@
 package model.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class EmployeeBean implements Serializable {
-	private String id;
-	private String password;
+public class StatusBean {
+	private String code;
 	private String name;
 	private Date updateDate;
 
-	public EmployeeBean() {
+	public StatusBean() {
 
 	}
 
 	/**
-	 * @return id
+	 * @return code
 	 */
-
-	public String getId() {
-		return id;
+	public String getCode() {
+		return code;
 	}
 
 	/**
-	 * @param id セットする id
+	 * @param code セットする code
 	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password セットする password
-	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	/**

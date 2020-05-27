@@ -1,11 +1,18 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.dao.TaskDAO;
+import model.entity.TaskBean;
 
 /**
  * Servlet implementation class MenuListServlet
@@ -13,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/menu-list-servlet")
 public class MenuListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,8 +41,24 @@ public class MenuListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		String url = null; //画面遷移先
 
+		// セッションオブジェクトの取得
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+			try {
+				TaskDAO taskDao = new TaskDAO();
+				List<TaskBean> myTaskList = taskDao.select(id);
+				List<TaskBean> taskList = taskDao.selectAll();
+				request.setAttribute("myTaskList", myTaskList);
+				request.setAttribute("taskList", taskList);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+
+		// リクエストの転送
+		RequestDispatcher rd = request.getRequestDispatcher("menu-list.jsp");
+		rd.forward(request, response);
+	}
 }
