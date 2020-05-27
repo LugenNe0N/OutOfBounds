@@ -25,14 +25,14 @@ CREATE TABLE m_category
   category_id                   INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   category_name                 VARCHAR(20) UNIQUE NOT NULL,
   update_datetime               TIMESTAMP DEFAULT current_timestamp on update current_timestamp NOT NULL
-)
+);
 
 CREATE TABLE m_status
 (
   status_code                   CHAR(2) PRIMARY KEY NOT NULL,
   status_name                   VARCHAR(20) UNIQUE NOT NULL,
   update_datetime               TIMESTAMP DEFAULT current_timestamp on update current_timestamp NOT NULL
-)
+);
 
 CREATE TABLE t_task
 (
@@ -47,7 +47,7 @@ CREATE TABLE t_task
   update_datetime               TIMESTAMP DEFAULT current_timestamp on update current_timestamp NOT NULL,
   FOREIGN KEY(category_id) REFERENCES m_category(category_id),
   FOREIGN KEY(user_id) REFERENCES m_user(user_id),
-)
+);
 
 INSERT INTO task_db.m_category (category_name) VALUES('新商品A：開発プロジェクト');
 INSERT INTO task_db.m_category (category_name) VALUES('既存所品B：改良プロジェクト');
