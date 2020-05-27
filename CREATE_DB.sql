@@ -46,7 +46,7 @@ CREATE TABLE t_task
   create_datetime               TIMESTAMP DEFAULT current_timestamp NOT NULL,
   update_datetime               TIMESTAMP DEFAULT current_timestamp on update current_timestamp NOT NULL,
   FOREIGN KEY(category_id) REFERENCES m_category(category_id),
-  FOREIGN KEY(user_id) REFERENCES m_user(user_id),
+  FOREIGN KEY(user_id) REFERENCES m_user(user_id)
 );
 
 INSERT INTO task_db.m_category (category_name) VALUES('新商品A：開発プロジェクト');
