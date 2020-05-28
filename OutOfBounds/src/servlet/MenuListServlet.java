@@ -21,43 +21,41 @@ import model.entity.TaskBean;
 public class MenuListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MenuListServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public MenuListServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = null; //画面遷移先
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
-			try {
-				TaskDAO taskDao = new TaskDAO();
-				List<TaskBean> myTaskList = taskDao.select(id);
-				List<TaskBean> taskList = taskDao.selectAll();
-				request.setAttribute("myTaskList", myTaskList);
-				request.setAttribute("taskList", taskList);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		String id = (String) session.getAttribute("id");
 
+		try {
+			TaskDAO taskDao = new TaskDAO();
+			List<TaskBean> myTaskList = taskDao.selectUser(id);
+			List<TaskBean> taskList = taskDao.selectAll();
+			request.setAttribute("myTaskList", myTaskList);
+			request.setAttribute("taskList", taskList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher("menu-list.jsp");
 		rd.forward(request, response);
 	}

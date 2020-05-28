@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,19 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.EmployeeDAO;
+import model.dao.CategoryDAO;
+import model.dao.TaskDAO;
+import model.entity.CategoryBean;
+import model.entity.TaskBean;
 
 /**
- * Servlet implementation class EmployeeDeleteServlet
+ * Servlet implementation class TaskSelectServlet
  */
-@WebServlet("/employee-delete-servlet")
-public class EmployeeDeleteServlet extends HttpServlet {
+@WebServlet("/task-select-servlet")
+public class TaskSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EmployeeDeleteServlet() {
+	public TaskSelectServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -43,20 +47,45 @@ public class EmployeeDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
 
-		String id = (String) session.getAttribute("id");
-		EmployeeDAO employeeDao = new EmployeeDAO();
+		String taskId = request.getParameter("taskId");
+
+		HttpSession session = request.getSession();
+		session.setAttribute("taskId", taskId);
+
+		TaskDAO taskDao = new TaskDAO();
+		TaskBean task = new TaskBean();
+
+		CategoryDAO categoryDao = new CategoryDAO();
+		CategoryBean category = new CategoryBean();
+		int categoryId;
+		String categoryName = null;
+
 		try {
 			// DAOの利用
-			employeeDao.delete(id);
-			session.invalidate();
+			task = taskDao.select(taskId);
+			categoryId = task.getCategoryId();
+			category = categoryDao.select(categoryId);
+			categoryName = category.getName();
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("employee-delete-result.jsp");
+		String taskName = task.getTaskName();
+		Date limitDate = task.getLimitDate();
+		String employeeId = task.getEmployeeId();
+		String status = task.getStatus();
+		String memo = task.getMemo();
+
+		request.setAttribute("taskName", taskName);
+		request.setAttribute("categoryName", categoryName);
+		request.setAttribute("limitDate", limitDate);
+		request.setAttribute("employeeId", employeeId);
+		request.setAttribute("status", status);
+		request.setAttribute("memo", memo);
+
+		RequestDispatcher rd = request.getRequestDispatcher("task-edit.jsp");
 		rd.forward(request, response);
 
 	}
