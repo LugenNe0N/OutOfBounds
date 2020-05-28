@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ユーザ削除</title>
 </head>
 <body>
-
+<h1>Delete Account</h1>
+<p>本当にユーザ情報を削除してもよろしいですか？</p>
+<form action="employee-delete-servlet" method="post">
+<input type="submit" value="YES">
+<input type="submit" value="NO">
+</form>
 </body>
 </html>
