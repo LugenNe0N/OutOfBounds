@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 
 			} else {
 
-				url = "login.html";
+				url = "loginerror.jsp";
 			}
 
 		} catch (Exception e) {

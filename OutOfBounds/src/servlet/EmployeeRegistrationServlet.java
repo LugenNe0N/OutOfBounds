@@ -52,9 +52,9 @@ public class EmployeeRegistrationServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String id = request.getParameter("code");
-		String password = request.getParameter("name");
-		String name = request.getParameter("age");
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
 		Timestamp update_datetime = new Timestamp(System.currentTimeMillis());
 
 		EmployeeBean employee = new EmployeeBean();
@@ -66,18 +66,22 @@ public class EmployeeRegistrationServlet extends HttpServlet {
 		// DAOの生成
 		EmployeeDAO employeeDao = new EmployeeDAO();
 
+		String url = null;
+		HttpSession session = request.getSession();
+
 		try {
 			// DAOの利用
 			employeeDao.insert(employee);
-			HttpSession session = request.getSession();
-
 			session.setAttribute("id", id);
+
+			url = "employee-registration-result.jsp";
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			url = "error.jsp";
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("employee-registration-result.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 
 	}

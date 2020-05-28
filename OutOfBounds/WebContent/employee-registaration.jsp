@@ -10,11 +10,11 @@
 <h1>Create New Account</h1>
 <form action="employee-registration-servlet" method="post">
 UserID<br>
-<input type="text" name="id"><br>
+<input type="text" name="id" required><br>
 Password<br>
-<input type="text" name="password"><br>
+<input type="text" name="password" required><br>
 Name<br>
-<input type="text" name="name"><br>
+<input type="text" name="name" required><br>
 <input type="submit" value="Create">
 </form>
 </body>
