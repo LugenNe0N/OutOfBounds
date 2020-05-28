@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ユーザ削除完了</title>
+<title>エラー</title>
 </head>
 <body>
-<h1>Succesful</h1>
-ユーザ情報を削除しました。<br>
-ログイン画面に戻ります。<br>
-<a href="login.html">
+<h1>Error Found</h1>
+エラーが発生しました。<br>
+メニュー画面に戻ります。<br>
+<a href="menu-list-servlet">
 <button type="button">Yse</button>
 </a>
 </body>
