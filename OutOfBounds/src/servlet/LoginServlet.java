@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import model.dao.EmployeeDAO;
 
-
 /**
  * ログイン認証処理を制御する
  * @author emBex Education
@@ -43,12 +42,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String url = null; //画面遷移先
+		String url = null;
 
-		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
 
-		// リクエストパラメータの取得
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 
@@ -58,17 +55,15 @@ public class LoginServlet extends HttpServlet {
 
 			// DAOの利用
 			if (employeeDao.loginCheck(id, password)) {
-				// 認証成功
+
 				url = "menu-list-servlet";
 
-				// セッションオブジェクトの取得
 				HttpSession session = request.getSession();
 
-				// セッションスコープへの属性の設定
 				session.setAttribute("id", id);
 
 			} else {
-				// 認証失敗
+
 				url = "login.html";
 			}
 
@@ -76,7 +71,6 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}

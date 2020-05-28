@@ -6,7 +6,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.EmployeeDAO;
 import model.entity.EmployeeBean;
@@ -49,35 +50,33 @@ public class EmployeeRegistrationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
 
-		// リクエストパラメータの取得
 		String id = request.getParameter("code");
 		String password = request.getParameter("name");
 		String name = request.getParameter("age");
-		Date date = new Date();
+		Timestamp update_datetime = new Timestamp(System.currentTimeMillis());
 
 		EmployeeBean employee = new EmployeeBean();
 		employee.setId(id);
 		employee.setPassword(password);
 		employee.setName(name);
-		employee.setUpdateDate(date);
+		employee.setUpdateDate(update_datetime);
 
 		// DAOの生成
 		EmployeeDAO employeeDao = new EmployeeDAO();
 
-		int count = 0; // 処理件数
-
 		try {
 			// DAOの利用
-			count = employeeDao.insert(employee);
+			employeeDao.insert(employee);
+			HttpSession session = request.getSession();
+
+			session.setAttribute("id", id);
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 
-		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher("employee-registration-result.jsp");
 		rd.forward(request, response);
 

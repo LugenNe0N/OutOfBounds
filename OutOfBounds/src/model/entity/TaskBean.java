@@ -1,9 +1,10 @@
 package model.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
-public class TaskBean implements Serializable{
+public class TaskBean implements Serializable {
 	private int taskId;
 	private String taskName;
 	private int CategoryId;
@@ -11,10 +12,10 @@ public class TaskBean implements Serializable{
 	private String employeeId;
 	private String status;
 	private String memo;
-	private Date registeredDate;
-	private Date updateDate;
+	private Timestamp registeredDate;
+	private Timestamp updateDate;
 
-	public TaskBean(){
+	public TaskBean() {
 
 	}
 
@@ -119,28 +120,28 @@ public class TaskBean implements Serializable{
 	/**
 	 * @return registeredDate
 	 */
-	public Date getRegisteredDate() {
+	public Timestamp getRegisteredDate() {
 		return registeredDate;
 	}
 
 	/**
 	 * @param registeredDate セットする registeredDate
 	 */
-	public void setRegisteredDate(Date registeredDate) {
+	public void setRegisteredDate(Timestamp registeredDate) {
 		this.registeredDate = registeredDate;
 	}
 
 	/**
 	 * @return updateDate
 	 */
-	public Date getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
 	/**
 	 * @param updateDate セットする updateDate
 	 */
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
 

@@ -1,13 +1,13 @@
 package model.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class EmployeeBean implements Serializable {
 	private String id;
 	private String password;
 	private String name;
-	private Date updateDate;
+	private Timestamp updateDate;
 
 	public EmployeeBean() {
 
@@ -59,14 +59,14 @@ public class EmployeeBean implements Serializable {
 	/**
 	 * @return updateDate
 	 */
-	public Date getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
 	/**
 	 * @param updateDate セットする updateDate
 	 */
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
 

@@ -1,8 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.TaskDAO;
 import model.entity.TaskBean;
@@ -41,40 +43,43 @@ public class TaskRegistrationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// リクエストオブジェクトのエンコーディング方式の指定
-				request.setCharacterEncoding("UTF-8");
 
-				// リクエストパラメータの取得
+				request.setCharacterEncoding("UTF-8");
+				HttpSession session = request.getSession();
+
+				String id = (String)session.getAttribute("id");
 				String taskName = request.getParameter("taskName");
 				int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-				Date limitDate = (Date)request.getParameter("limitDate");
+				Date limitDate = Date.valueOf(request.getParameter("limitDate"));
 				String employeeId = request.getParameter("employeeName");
 				String status = request.getParameter("status");
 				String memo = request.getParameter("memo");
+				Timestamp create_datetime = new Timestamp(System.currentTimeMillis());
 
 				TaskBean task = new TaskBean();
 				task.setTaskName(taskName);
 				task.setCategoryId(categoryId);
 				task.setLimitDate(limitDate);
+				task.setEmployeeId(id);
 				task.setEmployeeId(employeeId);
 				task.setStatus(status);
 				task.setMemo(memo);
+				task.setRegisteredDate(create_datetime);
+
 
 				// DAOの生成
 				TaskDAO taskDao = new TaskDAO();
 
-				int count = 0; // 処理件数
 
 				try {
 					// DAOの利用
-					count = taskDao.insert(task);
+					taskDao.insert(task);
 
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
 
-				// リクエストの転送
-				RequestDispatcher rd = request.getRequestDispatcher("employee-registration-result.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("task-registration-result.jsp");
 				rd.forward(request, response);
 
 			}

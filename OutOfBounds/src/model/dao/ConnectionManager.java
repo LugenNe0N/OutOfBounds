@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-	private final static String URL = "jdbc:mysql://localhost:3306/user_db?useSSL=false";
+	private final static String URL = "jdbc:mysql://localhost:3306/task_db?useSSL=false";
 	private final static String USER = "embexU";
 	private final static String PASSWORD = "embexP";
 

@@ -1,11 +1,11 @@
 package model.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class StatusBean {
 	private String code;
 	private String name;
-	private Date updateDate;
+	private Timestamp updateDate;
 
 	public StatusBean() {
 
@@ -42,14 +42,14 @@ public class StatusBean {
 	/**
 	 * @return updateDate
 	 */
-	public Date getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
 	/**
 	 * @param updateDate セットする updateDate
 	 */
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
 
