@@ -46,12 +46,14 @@ public class MenuListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 
+		TaskDAO taskDao = new TaskDAO();
+
+
 		try {
-			TaskDAO taskDao = new TaskDAO();
-			List<TaskBean> myTaskList = taskDao.selectUser(id);
 			List<TaskBean> taskList = taskDao.selectAll();
-			request.setAttribute("myTaskList", myTaskList);
+
 			request.setAttribute("taskList", taskList);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
