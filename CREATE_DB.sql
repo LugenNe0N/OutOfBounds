@@ -16,7 +16,7 @@ CREATE TABLE m_user
 (
     user_id                     VARCHAR(16) PRIMARY KEY NOT NULL,
     password                    VARCHAR(16) NOT NULL,
-    name                        VARCHAR(40) UNIQUE NOT NULL,
+    user_name                   VARCHAR(40) UNIQUE NOT NULL,
     update_datetime             TIMESTAMP DEFAULT current_timestamp on update current_timestamp NOT NULL
 );
 
