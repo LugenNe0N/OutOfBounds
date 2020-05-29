@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.EmployeeDAO;
+import model.entity.EmployeeBean;
 
 /**
  * ログイン認証処理を制御する
@@ -56,7 +58,9 @@ public class LoginServlet extends HttpServlet {
 			if (employeeDao.loginCheck(id, password)) {
 
 				url = "preload-servlet";
-
+				HttpSession session = request.getSession();
+				EmployeeBean emp= employeeDao.select(id);
+				session.setAttribute("emp", emp);
 
 				request.setAttribute("id", id);
 
