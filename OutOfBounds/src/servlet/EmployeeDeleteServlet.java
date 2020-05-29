@@ -47,18 +47,20 @@ public class EmployeeDeleteServlet extends HttpServlet {
 
 		String id = (String) session.getAttribute("id");
 		EmployeeDAO employeeDao = new EmployeeDAO();
+
+		String url = null;
 		try {
 			// DAOの利用
 			employeeDao.delete(id);
+			url = "employee-delete-result.jsp";
 			session.invalidate();
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("employee-delete-result.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 
 	}
-
 }

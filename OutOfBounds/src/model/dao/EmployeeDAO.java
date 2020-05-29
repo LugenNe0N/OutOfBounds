@@ -53,11 +53,9 @@ public class EmployeeDAO {
 
 	public void delete(String id) throws ClassNotFoundException, SQLException {
 		try (Connection con = ConnectionManager.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"DELETE FROM t_task WHERE user_id = ?; DELETE FROM m_user WHERE user_id = ?")) {
+				PreparedStatement pstmt = con.prepareStatement("DELETE FROM m_user WHERE user_id = ?")) {
 
 			pstmt.setString(1, id);
-			pstmt.setString(2, id);
 
 			pstmt.executeUpdate();
 		}
@@ -69,7 +67,7 @@ public class EmployeeDAO {
 		String sql = "SELECT * FROM m_user WHERE user_id = ?";
 
 		try (Connection con = ConnectionManager.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);) {
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
 
 			pstmt.setString(1, id);
 
