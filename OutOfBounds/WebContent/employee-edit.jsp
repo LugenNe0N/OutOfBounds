@@ -12,6 +12,7 @@
 Password<br><input type="text" name="password"><br>
 Name<br><input type="text" name="name"><br>
 <input type="submit" value="Apply">
+
 </form>
 <form action="menu-list.jsp" method="POST">
 <input type="submit" value="Menu">

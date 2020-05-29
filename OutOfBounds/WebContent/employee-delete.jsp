@@ -9,9 +9,11 @@
 <body>
 <h1>Delete Account</h1>
 <p>本当にユーザ情報を削除してもよろしいですか？</p>
-<form action="employee-delete-servlet" method="post">
-<input type="submit" value="YES">
-<input type="submit" value="NO">
+<form action="employee-delete-servlet" method="POST">
+<input type="submit" value="Yes">
+</form>
+<form action="menu-list-servlet" method="POST">
+<input type="submit" value="No">
 </form>
 </body>
 </html>

@@ -46,13 +46,13 @@ public class EmployeeEditServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		EmployeeBean employee = new EmployeeBean();
 
 		String id = (String) session.getAttribute("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		Timestamp create_datetime = new Timestamp(System.currentTimeMillis());
 
-		EmployeeBean employee = new EmployeeBean();
 		employee.setId(id);
 		employee.setPassword(password);
 		employee.setName(name);
