@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.TaskDAO;
 import model.entity.TaskBean;
@@ -57,7 +58,9 @@ public class TaskDeleteSelectServlet extends HttpServlet {
 		}
 
 
-		request.setAttribute("taskBean", task);
+		request.setAttribute("taskName", task.getTaskName());
+		HttpSession session = request.getSession();
+		session.setAttribute("taskId", task.getTaskId());
 
 		RequestDispatcher rd = request.getRequestDispatcher("task-delete.jsp");
 		rd.forward(request, response);

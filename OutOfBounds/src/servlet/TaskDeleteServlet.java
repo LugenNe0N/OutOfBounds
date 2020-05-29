@@ -45,13 +45,12 @@ public class TaskDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 
-		int taskId = (int)session.getAttribute("taskId");
+		int taskId = (Integer)session.getAttribute("taskId");
 		TaskDAO taskDao = new TaskDAO();
 		try {
+			session.removeAttribute("taskId");
 			// DAOの利用
 			taskDao.delete(taskId);
-			session.removeAttribute("taskId");
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

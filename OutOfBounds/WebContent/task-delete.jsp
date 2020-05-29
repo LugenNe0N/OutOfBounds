@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="model.entity.TaskBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,16 +8,15 @@
 </head>
 <body>
 <h1>Delete Task</h1>
-<%
 
-%>
-<!-- タスク名 -->
+<h3><%=request.getAttribute("taskName") %></h3>
 
 本当にこのタスクを削除しても<br>
 よろしいですか？<br>
 
 <!-- 削除サーブレットへ飛ばす -->
 <form action="task-delete-servlet" method="post">
+
 <input type="submit" value="Yes">
 </form>
 
