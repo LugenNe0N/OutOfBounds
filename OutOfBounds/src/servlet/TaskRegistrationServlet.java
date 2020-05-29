@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,24 +46,22 @@ public class TaskRegistrationServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 				HttpSession session = request.getSession();
 
-				String id = (String)session.getAttribute("id");
-				String taskName = request.getParameter("taskName");
-				int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-				Date limitDate = Date.valueOf(request.getParameter("limitDate"));
-				String employeeId = request.getParameter("employeeName");
-				String status = request.getParameter("status");
-				String memo = request.getParameter("memo");
-				Timestamp create_datetime = new Timestamp(System.currentTimeMillis());
+				String taskName = (String)request.getParameter("taskName");
+				int categoryId = Integer.parseInt(request.getParameter("categoryID"));
+				Date limitDate = Date.valueOf((String)request.getParameter("limitDate"));
+				String employeeId = (String)request.getParameter("employeeId");
+				String status = (String)request.getParameter("status");
+				String memo = (String)request.getParameter("memo");
+				//Timestamp create_datetime = new Timestamp(System.currentTimeMillis());
 
 				TaskBean task = new TaskBean();
 				task.setTaskName(taskName);
 				task.setCategoryId(categoryId);
 				task.setLimitDate(limitDate);
-				task.setEmployeeId(id);
 				task.setEmployeeId(employeeId);
 				task.setStatus(status);
 				task.setMemo(memo);
-				task.setRegisteredDate(create_datetime);
+				//task.setRegisteredDate(create_datetime);
 
 
 				// DAOの生成

@@ -12,17 +12,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>メニュー</title>
 </head>
 <body>
 
 	<%
 		EmployeeBean emp = (EmployeeBean) session.getAttribute("emp");
 		String empName;
-		if(emp!=null)empName=emp.getName();
-		else empName="as";
+		if (emp != null)
+			empName = emp.getName();
+		else
+			empName = "";
 
-		List<TaskBean> taskList = (List<TaskBean>) session.getAttribute("taskList");
+		List<TaskBean> taskList = (List<TaskBean>) request.getAttribute("taskList");
 		List<TaskBean> myTask = new ArrayList<>();
 		List<TaskBean> otherTask = new ArrayList<>();
 		if (taskList != null) {
@@ -56,17 +58,19 @@
 		%>
 		<li><%=my.getTaskName()%>
 			<form action="task-select-servlet" method="post">
+				<input type="hidden" name="taskId" value=<%=my.getTaskId()%>>
 				<input type="submit" value="Edit">
 			</form>
-			<form action="task-delete-servlet" method="post">
+			<form action="task-delete-select-servlet" method="post">
+				<input type="hidden" name="taskId" value=<%=my.getTaskId()%>>
 				<input type="submit" value="Delete">
 			</form></li>
 		<%
-				}
+			}
 			}
 		%>
 	</ul>
-	<form action="task-registration-servlet" method="post">
+	<form action="task-registration.jsp" method="post">
 		<input type="submit" value="Add">
 	</form>
 
@@ -79,13 +83,15 @@
 		%>
 		<li><%=other.getTaskName()%>
 			<form action="task-select-servlet" method="post">
+				<input type="hidden" name="taskId" value=<%=other.getTaskId()%>>
 				<input type="submit" value="Edit">
 			</form>
-			<form action="task-delete-servlet" method="post">
+			<form action="task-delete-select-servlet" method="post">
+				<input type="hidden" name="taskId" value=<%=other.getTaskId()%>>
 				<input type="submit" value="Delete">
 			</form></li>
 		<%
-				}
+			}
 			}
 		%>
 	</ul>
