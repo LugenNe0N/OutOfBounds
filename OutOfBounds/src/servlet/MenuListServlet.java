@@ -44,7 +44,6 @@ public class MenuListServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
 
 		TaskDAO taskDao = new TaskDAO();
 

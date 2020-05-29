@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.dao.EmployeeDAO;
 
@@ -56,11 +55,10 @@ public class LoginServlet extends HttpServlet {
 			// DAOの利用
 			if (employeeDao.loginCheck(id, password)) {
 
-				url = "menu-list-servlet";
+				url = "preload-servlet";
 
-				HttpSession session = request.getSession();
 
-				session.setAttribute("id", id);
+				request.setAttribute("id", id);
 
 			} else {
 
