@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"import ="
+	java.util.List,
+	model.entity.CategoryBean,
+	model.entity.StatusBean,
+	model.entity.TaskBean,
+	model.entity.EmployeeBean
+	"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,15 +19,17 @@
 
 	<form action="task-edit-servlet" method="post">
 		<ul>
-
-			<li>タスク名<br> <input type="text" name="taskName" value=<%=%>>
+<%
+	TaskBean task=(TaskBean)request.getAttribute("taskBean");
+%>
+			<li>タスク名<br> <input type="text" name="taskName" value="<%=task.getTaskName()%>">
 			</li>
 
 			<li>カテゴリ情報<br> <select name="categoryID">
+					<!-- value=カテゴリid   -->
 					<%
 
 					%>
-					<!-- value=カテゴリid   -->
 					<option value=<%=%>> <%=%> </option>
 					<%
 

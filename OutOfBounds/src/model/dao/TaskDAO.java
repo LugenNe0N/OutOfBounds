@@ -141,31 +141,4 @@ public class TaskDAO {
 		return list;
 	}
 
-	public List<TaskBean> selectUser(String id) throws ClassNotFoundException, SQLException {
-		List<TaskBean> list = new ArrayList<TaskBean>();
-		String sql = "SELECT * FROM t_task WHERE user_id = ?";
-
-		try (Connection con = ConnectionManager.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);) {
-
-			pstmt.setString(1, id);
-			ResultSet res = pstmt.executeQuery();
-
-			while (res.next()) {
-				TaskBean task = new TaskBean();
-				task.setTaskId(res.getInt("task_id"));
-				task.setTaskName(res.getString("task_name"));
-				task.setCategoryId(res.getInt("category_id"));
-				task.setLimitDate(res.getDate("limit_date"));
-				task.setEmployeeId(res.getString("user_id"));
-				task.setStatus(res.getString("status_code"));
-				task.setMemo(res.getString("memo"));
-				task.setRegisteredDate(res.getTimestamp("create_datetime"));
-				task.setUpdateDate(res.getTimestamp("update_datetime"));
-				list.add(task);
-			}
-		}
-
-		return list;
-	}
 }

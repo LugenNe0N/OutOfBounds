@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,23 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.dao.CategoryDAO;
+import model.dao.EmployeeDAO;
 import model.dao.StatusDAO;
-import model.dao.TaskDAO;
 import model.entity.CategoryBean;
+import model.entity.EmployeeBean;
 import model.entity.StatusBean;
-import model.entity.TaskBean;
 
 /**
- * Servlet implementation class TaskSelectServlet
+ * Servlet implementation class EmployeeSelectServlet
  */
-@WebServlet("/task-select-servlet")
-public class TaskSelectServlet extends HttpServlet {
+@WebServlet("/employee-select-servlet")
+public class PreloadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TaskSelectServlet() {
+	public PreloadServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -48,40 +47,28 @@ public class TaskSelectServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
-		String taskId = request.getParameter("taskId");
-
+		//カテゴリとステータスを読み込み、sessionに入れておく
 		HttpSession session = request.getSession();
-		session.setAttribute("taskId", taskId);
 
-		TaskDAO taskDao = new TaskDAO();
 		StatusDAO statusDao=new StatusDAO();
 		CategoryDAO categoryDao=new CategoryDAO();
-		TaskBean taskBean = new TaskBean();
-		CategoryBean categoryBean = new CategoryBean();
-		int categoryId;
+		EmployeeDAO employeeDao=new EmployeeDAO();
 
 		try {
 			List<StatusBean> statusList = statusDao.selectAll();
 			List<CategoryBean> categoryList = categoryDao.selectAll();
-			taskBean = taskDao.select(taskId);
-			categoryId = taskBean.getCategoryId();
-			categoryBean = categoryDao.select(categoryId);
-
-
-			request.setAttribute("statusList", statusList);
-			request.setAttribute("categoryList", categoryList);
-			request.setAttribute("taskBean", taskBean);
-			request.setAttribute("categoryBean", categoryBean);
-
-		} catch (ClassNotFoundException | SQLException e) {
+			List<EmployeeBean> employeeList = employeeDao.selectAll();
+			EmployeeBean emp=employeeDao.select((String)session.getAttribute("id"));
+			session.setAttribute("statusList", statusList);
+			session.setAttribute("categoryList", categoryList);
+			session.setAttribute("employeeList", employeeList);
+			session.setAttribute("emp", emp);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("task-edit.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("menu-list-servlet");
 		rd.forward(request, response);
-
 	}
 
 }
