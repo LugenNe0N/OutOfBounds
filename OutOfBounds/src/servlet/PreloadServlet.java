@@ -21,7 +21,7 @@ import model.entity.StatusBean;
 /**
  * Servlet implementation class EmployeeSelectServlet
  */
-@WebServlet("/employee-select-servlet")
+@WebServlet("/preload-servlet")
 public class PreloadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class PreloadServlet extends HttpServlet {
 			List<StatusBean> statusList = statusDao.selectAll();
 			List<CategoryBean> categoryList = categoryDao.selectAll();
 			List<EmployeeBean> employeeList = employeeDao.selectAll();
-			EmployeeBean emp=employeeDao.select((String)session.getAttribute("id"));
+			EmployeeBean emp=employeeDao.select((String)request.getAttribute("id"));
 			session.setAttribute("statusList", statusList);
 			session.setAttribute("categoryList", categoryList);
 			session.setAttribute("employeeList", employeeList);
