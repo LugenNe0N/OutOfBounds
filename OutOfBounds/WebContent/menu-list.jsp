@@ -20,14 +20,14 @@ EmployeeBean emp =(EmployeeBean) session.getAttribute("emp");
 
 List<TaskBean> taskList=(List<TaskBean>)session.getAttribute("TaskList");
 List<TaskBean> myTask=new ArrayList<>();
-List<TaskBean> OtherTask=new ArrayList<>();
+List<TaskBean> otherTask=new ArrayList<>();
 
 for(TaskBean t:taskList){
 	if(emp.getId().equals(t.getEmployeeId())){
 		myTask.add(t);
 	}
 	else{
-		OtherTask.add(t);
+		otherTask.add(t);
 	}
 }
 %>
@@ -45,7 +45,44 @@ for(TaskBean t:taskList){
 </form>
 
 <h2>My Task List</h2>
+<ul>
+<%
+for(TaskBean my:myTask){
+%>
+<li><%=my.getTaskName() %>
+<form action="task-select-servlet" method="post">
+<input type="submit" value="Edit">
+</form>
+<form action="task-delete-servlet" method="post">
+<input type="submit" value="Delete">
+</form>
+</li>
+<%
+}
+%>
+</ul>
+<form action="task-registration-servlet" method="post">
+<input type="submit" value="Add">
+</form>
+
 
 <h2>Other Task List</h2>
+<ul>
+<%
+for(TaskBean other:otherTask){
+%>
+<li><%=other.getTaskName() %>
+<form action="task-select-servlet" method="post">
+<input type="submit" value="Edit">
+</form>
+<form action="task-delete-servlet" method="post">
+<input type="submit" value="Delete">
+</form>
+</li>
+<%
+}
+%>
+</ul>
+
 </body>
 </html>
