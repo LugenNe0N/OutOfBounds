@@ -67,7 +67,7 @@ public class TaskDAO {
 	public void delete(int id) throws ClassNotFoundException, SQLException {
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"DELETE FROM t_task WHERE task_id = ?;")) {
+						"DELETE FROM t_task WHERE task_id = ?")) {
 
 			pstmt.setInt(1, id);
 
