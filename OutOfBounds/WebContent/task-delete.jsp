@@ -8,9 +8,11 @@
 </head>
 <body>
 <h1>Delete Task</h1>
+<%
 
+%>
 <!-- タスク名 -->
-<%= %>
+
 本当にこのタスクを削除しても<br>
 よろしいですか？<br>
 
@@ -21,6 +23,6 @@
 
 <!-- メニューへ戻す -->
 <!--<form action="menu-list.jsp" method="post"><input type="submit" value="Yes"></form>-->
-<a href ="menu-list-servlet"><button type="button">Yes</button></a>
+<a href ="menu-list-servlet"><button type="button">Menu</button></a>
 </body>
 </html>

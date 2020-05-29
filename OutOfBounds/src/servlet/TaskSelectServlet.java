@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,11 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.CategoryDAO;
-import model.dao.StatusDAO;
 import model.dao.TaskDAO;
-import model.entity.CategoryBean;
-import model.entity.StatusBean;
 import model.entity.TaskBean;
 
 /**
@@ -56,24 +51,16 @@ public class TaskSelectServlet extends HttpServlet {
 		session.setAttribute("taskId", taskId);
 
 		TaskDAO taskDao = new TaskDAO();
-		StatusDAO statusDao=new StatusDAO();
-		CategoryDAO categoryDao=new CategoryDAO();
+
 		TaskBean taskBean = new TaskBean();
-		CategoryBean categoryBean = new CategoryBean();
-		int categoryId;
+
+
 
 		try {
-			List<StatusBean> statusList = statusDao.selectAll();
-			List<CategoryBean> categoryList = categoryDao.selectAll();
 			taskBean = taskDao.select(taskId);
-			categoryId = taskBean.getCategoryId();
-			categoryBean = categoryDao.select(categoryId);
 
-
-			request.setAttribute("statusList", statusList);
-			request.setAttribute("categoryList", categoryList);
 			request.setAttribute("taskBean", taskBean);
-			request.setAttribute("categoryBean", categoryBean);
+
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
