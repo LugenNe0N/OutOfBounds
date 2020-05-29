@@ -78,7 +78,7 @@ public class EmployeeDAO {
 			while (res.next()) {
 				employee.setId(res.getString("user_id"));
 				employee.setPassword(res.getString("password"));
-				employee.setName(res.getString("user_name"));
+				employee.setName(res.getString("name"));
 				employee.setUpdateDate(res.getTimestamp("update_datetime"));
 			}
 		}

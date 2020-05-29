@@ -38,8 +38,7 @@ public class PreloadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
@@ -47,22 +46,24 @@ public class PreloadServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		//カテゴリとステータスを読み込み、sessionに入れておく
 		HttpSession session = request.getSession();
 
-		StatusDAO statusDao=new StatusDAO();
-		CategoryDAO categoryDao=new CategoryDAO();
-		EmployeeDAO employeeDao=new EmployeeDAO();
+		StatusDAO statusDao = new StatusDAO();
+		CategoryDAO categoryDao = new CategoryDAO();
+		EmployeeDAO employeeDao = new EmployeeDAO();
 
 		try {
+
 			List<StatusBean> statusList = statusDao.selectAll();
 			List<CategoryBean> categoryList = categoryDao.selectAll();
 			List<EmployeeBean> employeeList = employeeDao.selectAll();
-			EmployeeBean emp=employeeDao.select((String)request.getAttribute("id"));
+
 			session.setAttribute("statusList", statusList);
 			session.setAttribute("categoryList", categoryList);
 			session.setAttribute("employeeList", employeeList);
-			session.setAttribute("emp", emp);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
