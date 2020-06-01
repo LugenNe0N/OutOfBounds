@@ -3,6 +3,8 @@
 	import="
 	java.util.List,
 	java.util.ArrayList,
+	java.util.regex.Pattern,
+	java.util.regex.Matcher,
 	model.entity.CategoryBean,
 	model.entity.StatusBean,
 	model.entity.TaskBean,
@@ -17,6 +19,9 @@
 <body>
 
 	<%
+		final Pattern convURLLinkPtn = Pattern.compile(
+				"(http://|https://){1}[\\w\\.\\-/:\\#\\?\\=\\&\\;\\%\\~\\+]+",
+				Pattern.CASE_INSENSITIVE);
 		EmployeeBean emp = (EmployeeBean) session.getAttribute("emp");
 		String empName;
 		if (emp != null)
@@ -40,7 +45,14 @@
 			}
 		}
 	%>
-	<%!String categoryName(int id, List<CategoryBean> list) {
+	<!-- メソッド -->
+	<%!
+	public static String convURLLink(String str,Pattern convURLLinkPtn) {
+	    Matcher matcher = convURLLinkPtn.matcher(str);
+	    return matcher.replaceAll("<a href=\"$0\">$0</a>");
+	}
+
+	String categoryName(int id, List<CategoryBean> list) {
 		String name = "error";
 		for (CategoryBean category : list) {
 			if (category.getId() == id) {
@@ -107,7 +119,7 @@
 			<td><%=my.getLimitDate()%></td>
 			<td><%=employeeName(my.getEmployeeId(), employeeList)%></td>
 			<td><%=statusName(my.getStatus(), statusList)%></td>
-			<td><%=my.getMemo()%></td>
+			<td><%=convURLLink(my.getMemo(),convURLLinkPtn)%></td>
 
 			<td><form action="task-select-servlet" method="post">
 					<input type="hidden" name="taskId" value=<%=my.getTaskId()%>>
@@ -152,7 +164,7 @@
 			<td><%=other.getLimitDate()%></td>
 			<td><%=employeeName(other.getEmployeeId(), employeeList)%></td>
 			<td><%=statusName(other.getStatus(), statusList)%></td>
-			<td><%=other.getMemo()%></td>
+			<td><%=convURLLink(other.getMemo(),convURLLinkPtn)%></</td>
 			<td><form action="task-select-servlet" method="post">
 					<input type="hidden" name="taskId" value=<%=other.getTaskId()%>>
 					<input type="submit" value="Edit">
