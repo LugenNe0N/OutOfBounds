@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ex.Replace;
 import model.dao.EmployeeDAO;
 import model.entity.EmployeeBean;
 
@@ -47,26 +48,60 @@ public class EmployeeEditServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		EmployeeBean employee = (EmployeeBean)session.getAttribute("emp");
 
+		//追加
+		String id = Replace.replace(employee.getId());
+		String password = Replace.replace(request.getParameter("password"));
+		String name = Replace.replace(request.getParameter("name"));
+		//
+		//String password = request.getParameter("password");
+		//String name = request.getParameter("name");
 
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-
+		employee.setId(id);
 		employee.setPassword(password);
 		employee.setName(name);
+
+		employee = Replace.replaceUser(employee); //add
+
+		/* add
+		String url = null;
+		if (employee.getId().isEmpty()
+				|| employee.getPassword().isEmpty()
+				|| employee.getName().isEmpty()) {
+			url = "error.jsp";
+		} else {
+			url = "employee-edit-result.jsp";
+
+			// DAOの生成
+			EmployeeDAO employeeDao = new EmployeeDAO();
+
+			try {
+				// DAOの利用
+				employeeDao.update(employee);
+
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+				url = "error.jsp";
+			}
+		}
+		*/
 
 
 		// DAOの生成
 		EmployeeDAO employeeDao = new EmployeeDAO();
+		String url = null;
 
 		try {
 			// DAOの利用
 			employeeDao.update(employee);
+			url = "employee-edit-result.jsp";
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			url = "error.jsp";
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("employee-edit-result.jsp");
+
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 
 	}

@@ -22,7 +22,7 @@
 		if (emp != null)
 			empName = emp.getName();
 		else
-			empName = "";
+			empName = "as";
 
 		List<TaskBean> taskList = (List<TaskBean>) request.getAttribute("taskList");
 		List<CategoryBean> categoryList = (List<CategoryBean>) session.getAttribute("categoryList");
@@ -86,7 +86,7 @@
 	</form>
 
 	<h2>My Task List</h2>
-	<table>
+	<table border="1">
 		<tr>
 			<th>タスク名</th>
 			<th>カテゴリ情報</th>
@@ -128,7 +128,7 @@
 
 
 	<h2>Other Task List</h2>
-	<table>
+	<table border="1">
 		<tr>
 			<th>タスク名</th>
 			<th>カテゴリ情報</th>
