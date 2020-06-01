@@ -10,11 +10,11 @@
 <h1>Create New Account</h1>
 <form action="employee-registration-servlet" method="post">
 UserID<br>
-<input type="text" name="id" pattern=".*\S+.*" required><br>
+<input type="text" name="id" pattern="^[0-9A-Za-z]+$" required><br>
 Password<br>
-<input type="text" name="password" pattern=".*\S+.*" required><br>
+<input type="text" name="password" pattern="^[0-9A-Za-z]+$" required><br>
 Name<br>
-<input type="text" name="name" required><br>
+<input type="text" name="name" pattern=".*\S+.*" required><br>
 <input type="submit" value="Create">
 </form>
 <%@ include file="footer.jsp" %>
