@@ -14,6 +14,7 @@
 	</p>
 	<!-- メニューへ戻す -->
 <!--<form action="menu-list.jsp" method="post"><input type="submit" value="Yes"></form>-->
-<a href ="menu-list-servlet"><button type="button">Yes</button></a>
+<a href ="menu-list-servlet"><button type="button">Yes</button></a><br>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

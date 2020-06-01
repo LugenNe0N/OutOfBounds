@@ -12,6 +12,7 @@
 メニュー画面へ戻ります。<br>
 <a href="menu-list-servlet">
 <button type="button">Yse</button>
-</a>
+</a><br>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

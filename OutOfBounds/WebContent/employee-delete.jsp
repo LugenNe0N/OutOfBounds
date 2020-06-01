@@ -15,5 +15,6 @@
 <form action="menu-list-servlet" method="POST">
 <input type="submit" value="No">
 </form>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

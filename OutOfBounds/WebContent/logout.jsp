@@ -4,15 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ユーザ登録完了</title>
+<title>Lougout</title>
 </head>
 <body>
-<h1>Succesful</h1>
-ユーザ情報を作成しました。<br>
+<h1>Logout</h1>
+ログアウトしました。<br>
 ログイン画面に戻ります。<br>
-<a href="login.html">
-<button type="button">Yse</button>
-</a><br>
+<a href="login.jsp"><button type="button">Yse</button></a><br>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

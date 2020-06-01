@@ -17,5 +17,6 @@ Name<br>
 <input type="text" name="name" required><br>
 <input type="submit" value="Create">
 </form>
+<%@ include file="footer.jsp" %>
 </body>
 </html>
