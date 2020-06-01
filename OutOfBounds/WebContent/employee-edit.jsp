@@ -9,7 +9,7 @@
 <body>
 <h1>Edit Account</h1>
 <form action="employee-edit-servlet" method="POST">
-Password<br><input type="text" name="password" pattern=".*\S+.*" required><br>
+Password<br><input type="text" name="password" pattern="^[0-9A-Za-z]+$" required><br>
 Name<br><input type="text" name="name" pattern=".*\S+.*" required><br>
 <input type="submit" value="Apply">
 
