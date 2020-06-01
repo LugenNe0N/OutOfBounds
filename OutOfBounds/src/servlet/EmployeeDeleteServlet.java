@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.dao.EmployeeDAO;
+import model.entity.EmployeeBean;
 
 /**
  * Servlet implementation class EmployeeDeleteServlet
@@ -45,7 +46,8 @@ public class EmployeeDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 
-		String id = (String) session.getAttribute("id");
+		EmployeeBean employeeBean = (EmployeeBean) session.getAttribute("emp");
+		String id =employeeBean.getId();
 		EmployeeDAO employeeDao = new EmployeeDAO();
 
 		String url = null;
