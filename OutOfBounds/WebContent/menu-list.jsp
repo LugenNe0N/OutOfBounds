@@ -60,16 +60,15 @@
 		return name;
 	}
 
-	String statusName(String id,List<StatusBean> list){
-		String name ="error";
-		for(StatusBean status:list){
-			if(status.getCode().equals(id)){
-				name=status.getName();
+	String statusName(String id, List<StatusBean> list) {
+		String name = "error";
+		for (StatusBean status : list) {
+			if (status.getCode().equals(id)) {
+				name = status.getName();
 			}
 		}
 		return name;
-	}
-	%>
+	}%>
 
 
 	<h1>My Page</h1>
@@ -96,6 +95,7 @@
 			<th>メモ</th>
 			<th>編集</th>
 			<th>削除</th>
+			<th>最終更新</th>
 		</tr>
 		<%
 			if (taskList != null) {
@@ -106,8 +106,9 @@
 			<td><%=categoryName(my.getCategoryId(), categoryList)%></td>
 			<td><%=my.getLimitDate()%></td>
 			<td><%=employeeName(my.getEmployeeId(), employeeList)%></td>
-			<td><%=statusName(my.getStatus(),statusList)%></td>
+			<td><%=statusName(my.getStatus(), statusList)%></td>
 			<td><%=my.getMemo()%></td>
+
 			<td><form action="task-select-servlet" method="post">
 					<input type="hidden" name="taskId" value=<%=my.getTaskId()%>>
 					<input type="submit" value="Edit">
@@ -116,6 +117,7 @@
 					<input type="hidden" name="taskId" value=<%=my.getTaskId()%>>
 					<input type="submit" value="Delete">
 				</form></td>
+			<td><%=my.getUpdateDate()%></td>
 		</tr>
 		<%
 			}
@@ -138,6 +140,7 @@
 			<th>メモ</th>
 			<th>編集</th>
 			<th>削除</th>
+			<th>最終更新</th>
 		</tr>
 		<%
 			if (taskList != null) {
@@ -148,7 +151,7 @@
 			<td><%=categoryName(other.getCategoryId(), categoryList)%></td>
 			<td><%=other.getLimitDate()%></td>
 			<td><%=employeeName(other.getEmployeeId(), employeeList)%></td>
-			<td><%=statusName(other.getStatus(),statusList)%></td>
+			<td><%=statusName(other.getStatus(), statusList)%></td>
 			<td><%=other.getMemo()%></td>
 			<td><form action="task-select-servlet" method="post">
 					<input type="hidden" name="taskId" value=<%=other.getTaskId()%>>
@@ -158,6 +161,7 @@
 					<input type="hidden" name="taskId" value=<%=other.getTaskId()%>>
 					<input type="submit" value="Delete">
 				</form></td>
+			<td><%=other.getUpdateDate()%></td>
 		</tr>
 		<%
 			}

@@ -34,7 +34,7 @@
 			</select>
 			</li>
 
-			<li>期限<br> <input type="date" name="limitDate">
+			<li>期限<br> <input type="date" name="limitDate" required>
 			</li>
 
 			<li>担当者情報<br> <select name="employeeId">
