@@ -45,8 +45,7 @@ public class TaskEditServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-
-
+		String url="task-edit-result.jsp";
 		int taskId = Integer.parseInt(request.getParameter("categoryID"));
 		String taskName = (String) request.getParameter("taskName");
 		int categoryId = Integer.parseInt(request.getParameter("categoryID"));
@@ -71,10 +70,11 @@ public class TaskEditServlet extends HttpServlet {
 			taskDao.update(task);
 
 		} catch (ClassNotFoundException | SQLException e) {
+			url="error.jsp";
 			e.printStackTrace();
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("task-edit-result.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 
 	}

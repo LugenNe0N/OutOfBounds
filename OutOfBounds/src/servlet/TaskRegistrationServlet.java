@@ -45,6 +45,7 @@ public class TaskRegistrationServlet extends HttpServlet {
 
 				request.setCharacterEncoding("UTF-8");
 				HttpSession session = request.getSession();
+				String url="task-registration-result.jsp";
 
 				String taskName = (String)request.getParameter("taskName");
 				int categoryId = Integer.parseInt(request.getParameter("categoryID"));
@@ -73,10 +74,11 @@ public class TaskRegistrationServlet extends HttpServlet {
 					taskDao.insert(task);
 
 				} catch (ClassNotFoundException | SQLException e) {
+					url="error.jsp";
 					e.printStackTrace();
 				}
 
-				RequestDispatcher rd = request.getRequestDispatcher("task-registration-result.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher(url);
 				rd.forward(request, response);
 
 			}

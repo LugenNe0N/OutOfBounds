@@ -45,6 +45,7 @@ public class TaskDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 
+		String url="task-delete-result.jsp";
 		int taskId = (Integer)session.getAttribute("taskId");
 		TaskDAO taskDao = new TaskDAO();
 		try {
@@ -52,10 +53,11 @@ public class TaskDeleteServlet extends HttpServlet {
 			// DAOの利用
 			taskDao.delete(taskId);
 		} catch (ClassNotFoundException | SQLException e) {
+			url="error.jsp";
 			e.printStackTrace();
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("task-delete-result.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 
 	}
