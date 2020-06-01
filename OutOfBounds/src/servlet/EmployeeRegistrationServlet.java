@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ex.Replace;
 import model.dao.EmployeeDAO;
 import model.entity.EmployeeBean;
 
@@ -63,6 +64,8 @@ public class EmployeeRegistrationServlet extends HttpServlet {
 		employee.setName(name);
 		employee.setUpdateDate(update_datetime);
 
+		employee = Replace.replaceUser(employee);
+
 		// DAOの生成
 		EmployeeDAO employeeDao = new EmployeeDAO();
 
@@ -78,7 +81,7 @@ public class EmployeeRegistrationServlet extends HttpServlet {
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			url = "error.jsp";
+			url = "loginerror.jsp";
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);

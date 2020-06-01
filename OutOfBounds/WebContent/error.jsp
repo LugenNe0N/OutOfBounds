@@ -8,7 +8,6 @@
 </head>
 <body>
 <h1>Error Found</h1>
-<%=request.getAttribute("eMessage") %>
 エラーが発生しました。<br>
 メニュー画面に戻ります。<br>
 <a href="menu-list-servlet">
