@@ -52,6 +52,6 @@ CREATE TABLE t_task
 INSERT INTO task_db.m_category (category_name) VALUES('新商品A：開発プロジェクト');
 INSERT INTO task_db.m_category (category_name) VALUES('既存所品B：改良プロジェクト');
 
-INSERT INTO task_db.m_status (status_code, status_name) VALUES(00, '未着手');
-INSERT INTO task_db.m_status (status_code, status_name) VALUES(50, '着手');
-INSERT INTO task_db.m_status (status_code, status_name) VALUES(99, '完了');
+INSERT INTO task_db.m_status (status_code, status_name) VALUES('00', '未着手');
+INSERT INTO task_db.m_status (status_code, status_name) VALUES('50', '着手');
+INSERT INTO task_db.m_status (status_code, status_name) VALUES('99', '完了');
