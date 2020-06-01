@@ -97,6 +97,7 @@
 		<input type = "hidden" name="taskId" value="<%= task.getTaskId()%>">
 		<input type="submit" value="Edit">
 	</form>
-	<a href="menu-list-servlet"><button type="button">Menu</button></a>
+	<a href="menu-list-servlet"><button type="button">Menu</button></a><br>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

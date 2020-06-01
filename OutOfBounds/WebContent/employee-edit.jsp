@@ -17,5 +17,6 @@ Name<br><input type="text" name="name" pattern=".*\S+.*" required><br>
 <form action="menu-list.jsp" method="POST">
 <input type="submit" value="Menu">
 </form>
+<%@ include file="footer.jsp" %>
 </body>
 </html>
