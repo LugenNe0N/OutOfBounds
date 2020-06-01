@@ -34,18 +34,17 @@ public class EmployeeDAO {
 	public void update(EmployeeBean employee) throws ClassNotFoundException, SQLException {
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"UPDATE m_user SET password = ?, user_name = ?,update_datetime = ? WHERE user_id = ?")) {
+						"UPDATE m_user SET password = ?, user_name = ? WHERE user_id = ?")) {
 
 			// DTOからのデータの取り出し
 			String user_id = employee.getId();
 			String password = employee.getPassword();
 			String user_name = employee.getName();
-			Timestamp update_datetime = employee.getUpdateDate();
+
 
 			pstmt.setString(1, password);
 			pstmt.setString(2, user_name);
-			pstmt.setTimestamp(3, update_datetime);
-			pstmt.setString(4, user_id);
+			pstmt.setString(3, user_id);
 
 			pstmt.executeUpdate();
 		}

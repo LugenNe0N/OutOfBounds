@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,17 +45,15 @@ public class EmployeeEditServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		EmployeeBean employee = new EmployeeBean();
+		EmployeeBean employee = (EmployeeBean)session.getAttribute("emp");
 
-		String id = (String) session.getAttribute("id");
+
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		Timestamp create_datetime = new Timestamp(System.currentTimeMillis());
 
-		employee.setId(id);
 		employee.setPassword(password);
 		employee.setName(name);
-		employee.setUpdateDate(create_datetime);
+
 
 		// DAOの生成
 		EmployeeDAO employeeDao = new EmployeeDAO();

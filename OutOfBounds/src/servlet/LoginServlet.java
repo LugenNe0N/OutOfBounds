@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 				EmployeeBean emp= employeeDao.select(id);
 				session.setAttribute("emp", emp);
 
-				request.setAttribute("id", id);
+
 
 			} else {
 
