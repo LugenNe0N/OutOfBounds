@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.entity.EmployeeBean;
+import model.entity.TaskBean;
 
 public class EmployeeDAO {
 	public void insert(EmployeeBean employee) throws ClassNotFoundException, SQLException {
@@ -41,7 +42,6 @@ public class EmployeeDAO {
 			String password = employee.getPassword();
 			String user_name = employee.getName();
 
-
 			pstmt.setString(1, password);
 			pstmt.setString(2, user_name);
 			pstmt.setString(3, user_id);
@@ -56,6 +56,16 @@ public class EmployeeDAO {
 
 			pstmt.setString(1, id);
 
+
+
+			TaskDAO taskDao = new TaskDAO();
+			List<TaskBean> taskList = taskDao.selectAll();
+
+			for (TaskBean t : taskList) {
+				if (t.getEmployeeId().equals(id)) {
+					taskDao.delete(t.getTaskId());
+				}
+			}
 			pstmt.executeUpdate();
 		}
 	}
