@@ -11,7 +11,7 @@
 エラーが発生しました。<br>
 ログイン画面に戻ります。<br>
 <a href="login.jsp">
-<button type="button">Yse</button>
+<button type="button">Yes</button>
 </a><br>
 <%@ include file="footer.jsp" %>
 </body>
