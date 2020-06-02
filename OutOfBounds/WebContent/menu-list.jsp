@@ -15,9 +15,9 @@
 <head>
 <meta charset="UTF-8">
 <title>メニュー</title>
+<link rel="stylesheet" type="text/css" href="sample.css">
 </head>
 <body>
-
 	<%
 		final Pattern convURLLinkPtn = Pattern.compile(
 				"(http://|https://){1}[\\w\\.\\-/:\\#\\?\\=\\&\\;\\%\\~\\+]+",
@@ -84,10 +84,11 @@
 
 
 	<h1>My Page</h1>
+	<div class="mar-left">
 	<%=empName%><br>
-
+	<div style="display: inline-flex">
 	<form action="employee-edit.jsp" method="post">
-		<input type="submit" value="edit">
+		<input type="submit" value="Edit">
 	</form>
 	<form action="employee-delete.jsp" method="post">
 		<input type="submit" value="Delete">
@@ -95,7 +96,7 @@
 	<form action="logout-servlet" method="post">
 		<input type="submit" value="Logout">
 	</form>
-
+	</div>
 	<h2>My Task List</h2>
 	<table border="1">
 		<tr>
@@ -180,6 +181,7 @@
 			}
 		%>
 	</table>
+	</div>
 <%@ include file="footer.jsp" %>
 </body>
 </html>
