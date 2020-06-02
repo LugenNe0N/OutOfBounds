@@ -9,6 +9,8 @@
 </head>
 <body>
 <h1>Login</h1>
+<div class="d1">
+<div class="login">
 <form action="login-servlet" method="POST">
 UserID<br>
 <input type="text" name="id" maxlength="24" required><br>
@@ -16,9 +18,11 @@ Password<br>
 <input type="text" name="password" maxlength="32" required><br>
 <input type="submit" value="Login">
 </form>
-<form action="employee-registaration.jsp">
+<form action="employee-registration.jsp">
 <input type="submit" value="Register">
 </form>
+</div>
+</div>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

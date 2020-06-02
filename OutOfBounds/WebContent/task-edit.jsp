@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>タスク編集</title>
+<link rel="stylesheet" type="text/css" href="sample.css">
 </head>
 <body>
 	<%
@@ -19,10 +20,11 @@
 	%>
 
 
-	<h1>Edit Task</h1>
-	<p>編集内容を入力してください</p>
+	<h1 class="form">Edit Task</h1>
+	<p class="center">編集内容を入力してください</p>
 
 	<br>
+	<div class="task">
 	<form action="task-edit-servlet" method="post">
 		<ul>
 			<li>タスク名<br> <input type="text" name="taskName" pattern=".*\S+.*" required
@@ -97,7 +99,10 @@
 		<input type = "hidden" name="taskId" value="<%= task.getTaskId()%>">
 		<input type="submit" value="Edit">
 	</form>
+	<div class="center">
 	<a href="menu-list-servlet"><button type="button">Menu</button></a><br>
+	</div>
+	</div>
 	<%@ include file="footer.jsp" %>
 </body>
 </html>
