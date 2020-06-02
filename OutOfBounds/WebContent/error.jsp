@@ -11,7 +11,7 @@
 エラーが発生しました。<br>
 メニュー画面に戻ります。<br>
 <a href="menu-list-servlet">
-<button type="button">Yse</button>
+<button type="button">Yes</button>
 </a><br>
 <%@ include file="footer.jsp" %>
 </body>

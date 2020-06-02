@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ex.Replace;
 import model.dao.EmployeeDAO;
 import model.entity.EmployeeBean;
 
@@ -47,8 +48,8 @@ public class LoginServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+		String id = Replace.replace(request.getParameter("id"));
+		String password = Replace.replace(request.getParameter("password"));
 
 		try {
 			// DAOの生成

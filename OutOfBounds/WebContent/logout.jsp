@@ -10,7 +10,7 @@
 <h1>Logout</h1>
 ログアウトしました。<br>
 ログイン画面に戻ります。<br>
-<a href="login.jsp"><button type="button">Yse</button></a><br>
+<a href="login.jsp"><button type="button">Yes</button></a><br>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

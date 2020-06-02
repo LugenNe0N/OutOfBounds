@@ -7,11 +7,11 @@
 <title>ユーザ登録完了</title>
 </head>
 <body>
-<h1>Succesful</h1>
+<h1>Successful</h1>
 ユーザ情報を作成しました。<br>
 ログイン画面に戻ります。<br>
 <a href="login.jsp">
-<button type="button">Yse</button>
+<button type="button">Yes</button>
 </a><br>
 <%@ include file="footer.jsp" %>
 </body>
