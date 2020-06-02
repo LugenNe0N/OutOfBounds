@@ -65,18 +65,29 @@ h1 {
 	text-align: center;
 }
 
+
 footer {
-	margin-top: 50px;
+	width: 100%;
 	font-family: arial;
-	clear: both;
-	text-align: center;
-	font-size: 20px;
-	border-top: solid 2px;
+	margin: 0px;
+    /*
+    background-color: #89c7de;
+    color: #fff;
+    padding: 30px 0;
+    */
+    clear:both;
+    background-color: #ebebeb;
+    text-align: center;
+    border-top: solid 2px;
 	border-bottom: solid 2px;
-	background-color: #ebebeb;
+	padding: 20px 0;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
 }
 
 body {
+	min-height: 100vh;
+	margin: 0px;
 	background-color: #93b2c7;
 	background-image:
 		url("https://www.transparenttextures.com/patterns/foggy-birds.png");
@@ -92,7 +103,7 @@ table {
 	background-color: white;
 }
 
-.mar-left {
+.list {
 	width:1080px;
 	margin-left: auto;
 	margin-right:auto;
