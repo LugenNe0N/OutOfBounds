@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,7 +48,6 @@ public class EmployeeEditServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		EmployeeBean employee = (EmployeeBean)session.getAttribute("emp");
-
 		//追加
 		String id = Replace.replace(employee.getId());
 		String password = Replace.replace(request.getParameter("password"));
@@ -88,11 +88,14 @@ public class EmployeeEditServlet extends HttpServlet {
 
 		// DAOの生成
 		EmployeeDAO employeeDao = new EmployeeDAO();
+
 		String url = null;
 
 		try {
 			// DAOの利用
 			employeeDao.update(employee);
+			List<EmployeeBean> employeeList = employeeDao.selectAll();
+			session.setAttribute("employeeList", employeeList);
 			url = "employee-edit-result.jsp";
 
 		} catch (ClassNotFoundException | SQLException e) {
