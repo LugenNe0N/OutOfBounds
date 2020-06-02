@@ -84,7 +84,8 @@
 
 
 	<h1>My Page</h1>
-	<div class="mar-left">
+
+	<div class="list">
 	<%=empName%><br>
 	<div style="display: inline-flex">
 	<form action="employee-edit.jsp" method="post">
