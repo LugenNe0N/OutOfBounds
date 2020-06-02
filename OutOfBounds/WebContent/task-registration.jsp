@@ -19,7 +19,7 @@
 	<form action="task-registration-servlet" method="post">
 		<ul>
 			<li>タスク名<br> <input type="text" name="taskName" required
-				maxlength=50>
+				maxlength=50 pattern=".*\S+.*">
 			</li>
 
 			<li>カテゴリ情報<br> <select name="categoryID">
