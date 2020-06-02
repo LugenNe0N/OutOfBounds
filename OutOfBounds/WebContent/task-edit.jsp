@@ -25,7 +25,7 @@
 	<br>
 	<form action="task-edit-servlet" method="post">
 		<ul>
-			<li>タスク名<br> <input type="text" name="taskName" required
+			<li>タスク名<br> <input type="text" name="taskName" pattern=".*\S+.*" required
 				value=<%=task.getTaskName()%> maxlength=50>
 			</li>
 
