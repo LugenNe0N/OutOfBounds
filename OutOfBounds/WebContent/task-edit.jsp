@@ -29,7 +29,7 @@
 				value=<%=task.getTaskName()%> maxlength=50>
 			</li>
 
-			<li>カテゴリ情報<br> <select name="categoryID">
+			<li>カテゴリ情報<br> <select name="categoryId">
 					<%
 						List<CategoryBean> categoryList = (List<CategoryBean>) session.getAttribute("categoryList");
 						for (CategoryBean c : categoryList) {

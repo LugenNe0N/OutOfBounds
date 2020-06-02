@@ -46,9 +46,9 @@ public class TaskEditServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String url="task-edit-result.jsp";
-		int taskId = Integer.parseInt(request.getParameter("categoryID"));
+		int taskId = Integer.parseInt(request.getParameter("taskId"));
 		String taskName = (String) request.getParameter("taskName");
-		int categoryId = Integer.parseInt(request.getParameter("categoryID"));
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 		Date limitDate = Date.valueOf((String) request.getParameter("limitDate"));
 		String employeeId = (String) request.getParameter("employeeId");
 		String status = (String) request.getParameter("status");
