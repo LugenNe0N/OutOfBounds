@@ -22,7 +22,7 @@
 		final Pattern convURLLinkPtn = Pattern.compile(
 				"(http://|https://){1}[\\w\\.\\-/:\\#\\?\\=\\&\\;\\%\\~\\+]+",
 				Pattern.CASE_INSENSITIVE);
-		EmployeeBean emp = (EmployeeBean) session.getAttribute("emp");
+		EmployeeBean emp = (EmployeeBean) request.getAttribute("name");
 		String empName;
 		if (emp != null)
 			empName = emp.getName();

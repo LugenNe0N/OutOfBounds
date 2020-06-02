@@ -9,8 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.dao.EmployeeDAO;
 import model.dao.TaskDAO;
+import model.entity.EmployeeBean;
 import model.entity.TaskBean;
 
 /**
@@ -43,12 +46,17 @@ public class MenuListServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		TaskDAO taskDao = new TaskDAO();
+		EmployeeDAO employeeDao =new EmployeeDAO();
+		HttpSession session =request.getSession();
+		EmployeeBean employee =(EmployeeBean)session.getAttribute("emp");
 
 
 		try {
 			List<TaskBean> taskList = taskDao.selectAll();
+			EmployeeBean name =employeeDao.select(employee.getId());
 
 			request.setAttribute("taskList", taskList);
+			request.setAttribute("name", name);
 
 		} catch (Exception e) {
 			e.printStackTrace();
