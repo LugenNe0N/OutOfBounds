@@ -16,6 +16,7 @@
 <meta charset="UTF-8">
 <title>メニュー</title>
 <link rel="stylesheet" type="text/css" href="sample.css">
+
 </head>
 <body>
 	<%
@@ -86,7 +87,9 @@
 	<h1>My Page</h1>
 
 	<div class="list">
-	<%=empName%><br>
+	<div class="name">
+		<%=empName%>
+	</div>
 	<div style="display: inline-flex">
 	<form action="employee-edit.jsp" method="post">
 		<input type="submit" value="Edit">
