@@ -12,11 +12,11 @@
 <div class="emp-regist">
 <form action="employee-registration-servlet" method="post">
 UserID<br>
-<input type="text" name="id" pattern="^[0-9A-Za-z]+$" maxlength=24 required><br>
+<input type="text" name="id" autocomplete="off" pattern="^[0-9A-Za-z]+$" maxlength=24 required><br>
 Password<br>
-<input type="text" name="password" pattern="^[0-9A-Za-z]+$" maxlength=32 required><br>
+<input type="text" name="password" autocomplete="off" pattern="^[0-9A-Za-z]+$" maxlength=32 required><br>
 Name<br>
-<input type="text" name="name" pattern=".*\S+.*" maxlength=20 required><br>
+<input type="text" name="name" autocomplete="off" pattern=".*\S+.*" maxlength=20 required><br>
 <input type="submit" value="Create">
 </form>
 <a href="login.jsp">
