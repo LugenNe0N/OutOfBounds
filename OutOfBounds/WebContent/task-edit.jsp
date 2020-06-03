@@ -97,7 +97,9 @@
 			</li>
 		</ul>
 		<input type = "hidden" name="taskId" value="<%= task.getTaskId()%>">
+		<div class="center">
 		<input type="submit" value="Edit">
+		</div>
 	</form>
 	<div class="center">
 	<a href="menu-list-servlet"><button type="button">Menu</button></a><br>
