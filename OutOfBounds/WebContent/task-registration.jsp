@@ -65,7 +65,9 @@
 			<li>メモ<br> <textarea name="memo" maxlength=100></textarea>
 			</li>
 		</ul>
+		<div class="center">
 		<input type="submit" value="Add">
+		</div>
 	</form>
 
 	<!--<form action="menu-list.jsp" method="post"><input type="submit" value="Yes"></form>-->

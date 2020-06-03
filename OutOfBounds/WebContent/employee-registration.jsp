@@ -19,6 +19,9 @@ Name<br>
 <input type="text" name="name" pattern=".*\S+.*" maxlength=20 required><br>
 <input type="submit" value="Create">
 </form>
+<a href="login.jsp">
+<button type="button">Return</button>
+</a><br>
 </div>
 <%@ include file="footer.jsp" %>
 </body>
