@@ -28,7 +28,7 @@
 		if (emp != null)
 			empName = emp.getName();
 		else
-			empName = "as";
+			empName = "エラーが発生しました。ログアウトし最初からやり直してください。";
 
 		List<TaskBean> taskList = (List<TaskBean>) request.getAttribute("taskList");
 		List<CategoryBean> categoryList = (List<CategoryBean>) session.getAttribute("categoryList");
