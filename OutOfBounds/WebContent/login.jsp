@@ -16,7 +16,7 @@
 UserID<br>
 <input type="text" name="id" maxlength="24" autocomplete="off" pattern=".*\S+.*" required><br>
 Password<br>
-<input type="text" name="password" maxlength="32" autocomplete="off" pattern=".*\S+.*" required><br>
+<input type="password" name="password" maxlength="32" autocomplete="off" pattern=".*\S+.*" required><br>
 <input type="submit" value="Login">
 </form>
 <form action="employee-registration.jsp">
